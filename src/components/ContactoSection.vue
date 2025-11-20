@@ -26,13 +26,13 @@
         </v-col>
         <v-col cols="12" md="3" class="d-flex flex-column align-center">
           <div style="display:flex;gap:12px;justify-content:center;">
-            <v-btn icon href="https://www.tiktok.com/@f5consultoria" target="_blank" style="background:#FFFFFF;border-radius:50%;box-shadow:0 2px 8px #E5E5E5;">
+            <v-btn icon href="https://www.tiktok.com/@f5consultoriamarketing?_r=1&_t=ZM-91Z9I5bhHxc" target="_blank" style="background:#FFFFFF;border-radius:50%;box-shadow:0 2px 8px #E5E5E5;">
               <img src="https://img.icons8.com/color/48/000000/tiktok--v1.png" alt="TikTok" style="height:32px;width:32px;object-fit:contain;vertical-align:middle;" />
             </v-btn>
-            <v-btn icon href="https://www.instagram.com/f5consultoria" target="_blank" style="background:#FFFFFF;border-radius:50%;box-shadow:0 2px 8px #E5E5E5;">
+            <v-btn icon href="https://www.instagram.com/f5consultoriamarketing/" target="_blank" style="background:#FFFFFF;border-radius:50%;box-shadow:0 2px 8px #E5E5E5;">
               <v-icon size="32" color="#2F2E83">mdi-instagram</v-icon>
             </v-btn>
-            <v-btn icon href="https://www.facebook.com/f5consultoria" target="_blank" style="background:#FFFFFF;border-radius:50%;box-shadow:0 2px 8px #E5E5E5;">
+            <v-btn icon href="https://www.facebook.com/profile.php?id=61560386361492" target="_blank" style="background:#FFFFFF;border-radius:50%;box-shadow:0 2px 8px #E5E5E5;">
               <v-icon size="32" color="#2F2E83">mdi-facebook</v-icon>
             </v-btn>
             <v-btn icon href="https://wa.me/50377370216?text=Gracias%20por%20comunicarte%20con%20F5%20Consultoria%20Y%20Marketing.%20%C2%BFC%C3%B3mo%20podemos%20ayudarte%3F" target="_blank" style="background:#F47B20;border-radius:50%;box-shadow:0 2px 8px #F47B2044;">
