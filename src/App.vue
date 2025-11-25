@@ -201,7 +201,7 @@ a {
 
 .main-bg-light {
   min-height: 100vh;
-  background: #FFFFFF;
+  background: #FFFFFF !important;
   position: relative;
   overflow: visible;
 }
@@ -213,8 +213,18 @@ a {
 }
 
 .main-bg-light p,
-.main-bg-light span {
+.main-bg-light span,
+.main-bg-light .v-card-text {
   color: #1A1A1A !important;
+}
+
+.main-bg-light .v-card {
+  background: #FFFFFF !important;
+  color: #1A1A1A !important;
+}
+
+.main-bg-light .v-card-title {
+  color: #2F2E83 !important;
 }
 
 .drawer-light {
@@ -241,7 +251,7 @@ a {
 
 .main-bg-dark {
   min-height: 100vh;
-  background: #1A1A3E;
+  background: #1A1A3E !important;
   position: relative;
   overflow: visible;
 }
@@ -250,11 +260,12 @@ a {
 .main-bg-dark h2,
 .main-bg-dark h3 {
   color: #FFFFFF !important;
-  text-shadow: 0 2px 12px #F47B2044;
+  text-shadow: 0 2px 12px #F47B2044 !important;
 }
 
 .main-bg-dark p,
-.main-bg-dark span {
+.main-bg-dark span,
+.main-bg-dark .v-card-text {
   color: #E5E5E5 !important;
 }
 
@@ -267,9 +278,13 @@ a {
   color: #F47B20 !important;
 }
 
-.main-bg-dark .v-card-text,
 .main-bg-dark .v-card-text p {
   color: #E5E5E5 !important;
+}
+
+.main-bg-dark .card-gradient {
+  background: linear-gradient(135deg, #2A2A4E 0%, #3A3A6E 100%) !important;
+  color: #FFFFFF !important;
 }
 
 .drawer-dark {
@@ -454,14 +469,14 @@ a {
 .carrusel-texto h2 {
   margin: 0 0 8px 0;
   font-size: 2rem;
-  color: #F47B20;
+  color: #F47B20 !important;
   font-weight: bold;
 }
 
 .carrusel-texto p {
   margin: 0;
   font-size: 1.15rem;
-  color: #fff;
+  color: #FFFFFF !important;
 }
 
 .whatsapp-float {
@@ -480,5 +495,37 @@ a {
 .whatsapp-float:hover {
   box-shadow: 0 8px 32px #25D36688;
   transform: scale(1.08);
+}
+
+/* ========================================
+   ARREGLOS ESPECÍFICOS PARA CELULAR
+======================================== */
+
+/* Forzar fondo blanco en cards en modo claro */
+.main-bg-light .v-container .v-card {
+  background: #FFFFFF !important;
+}
+
+/* Forzar fondo oscuro en cards en modo oscuro */
+.main-bg-dark .v-container .v-card {
+  background: #2A2A4E !important;
+}
+
+/* Arreglar gradiente en modo oscuro */
+.main-bg-dark .card-gradient {
+  background: linear-gradient(135deg, #2A2A4E 0%, #3A3A6E 100%) !important;
+}
+
+/* Asegurar que los textos se vean bien en modo oscuro */
+.main-bg-dark .v-card p,
+.main-bg-dark .v-card span,
+.main-bg-dark .v-card-text,
+.main-bg-dark .v-card-text p {
+  color: #E5E5E5 !important;
+}
+
+/* Asegurar que los títulos de cards se vean en naranja en modo oscuro */
+.main-bg-dark .v-card .v-card-title {
+  color: #F47B20 !important;
 }
 </style>
