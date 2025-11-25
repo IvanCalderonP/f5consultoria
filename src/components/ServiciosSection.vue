@@ -1,7 +1,7 @@
 <template>
   <section id="servicios">
     <v-container>
-  <h1 class="mb-8 font-weight-bold" style="color:#2F2E83;letter-spacing:1px;text-shadow:0 2px 12px #F47B2044;">Servicios y Productos</h1>
+      <h1 class="mb-8 font-weight-bold" style="color:#2F2E83;letter-spacing:3px;text-shadow:0 2px 12px #F47B2044;">Servicios y Productos</h1>
 
       <v-row>
         <v-col cols="12" md="6">
@@ -178,7 +178,7 @@ export default {
       ],
       llaverosImgs: [
         'https://images.unsplash.com/photo-1519125323398-675f0ddb6308',
-        'https://images.unsplash.com/photo-1519125323398-675f0ddb6308',
+        'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
       ],
       bannersImgs: [
         'https://images.unsplash.com/photo-1465101178521-c1a6f3b4e8a6',
@@ -202,13 +202,14 @@ export default {
   transform: scale(1.03);
 }
 .v-card-title {
-  font-size: 1.3rem;
-  letter-spacing: 1px;
+  font-size: 1.4rem;
+  letter-spacing: 1.5px;
 }
 .v-card-text p {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: #333;
   margin-bottom: 16px;
+  line-height: 1.6;
 }
 .v-img.rounded-lg {
   border-radius: 16px;

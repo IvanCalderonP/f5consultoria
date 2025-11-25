@@ -1,8 +1,8 @@
 <template>
   <v-app>
-  <v-app-bar app dark elevation="8" style="background: linear-gradient(90deg, #2F2E83 0%, #F47B20 50%, #1A1A1A 100%); border-radius: 0 0 24px 24px; box-shadow: 0 8px 32px #2F2E8344;">
+    <v-app-bar app dark elevation="8" style="background: linear-gradient(90deg, #2F2E83 0%, #F47B20 50%, #1A1A1A 100%); border-radius: 0 0 24px 24px; box-shadow: 0 8px 32px #2F2E8344;">
       <v-toolbar-title class="d-flex align-center">
-  <img :src="logo" alt="Logo" height="72" style="margin-right: 18px; filter: drop-shadow(0 2px 8px #F47B2044); border-radius: 12px; background: transparent; padding: 4px;" />
+        <img :src="logo" alt="Logo" height="72" style="margin-right: 18px; filter: drop-shadow(0 2px 8px #F47B2044); border-radius: 12px; background: transparent; padding: 4px;" />
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-row class="d-none d-md-flex">
@@ -12,11 +12,11 @@
         <v-btn text to="/educativa" style="color:#FFFFFF;font-weight:bold;">Sección Educativa</v-btn>
         <v-btn text @click="scrollToFooter" style="color:#F47B20;font-weight:bold;">Contáctenos</v-btn>
       </v-row>
-  <v-btn icon class="d-md-none" @click="drawer = true">
+      <v-btn icon class="d-md-none" @click="drawer = true">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
-  <v-navigation-drawer v-model="drawer" temporary right>
+    <v-navigation-drawer v-model="drawer" temporary right>
       <v-list>
         <v-list-item @click="goTo('/')">Inicio</v-list-item>
         <v-list-item @click="goTo('/servicios')">Servicios</v-list-item>
@@ -69,7 +69,6 @@ const drawer = ref(false);
 const router = useRouter();
 const showContacto = ref(false);
 
-
 function goTo(path) {
   router.push(path);
   drawer.value = false;
@@ -86,94 +85,195 @@ function handleContacto() {
   scrollToFooter();
   drawer.value = false;
 }
-
 </script>
 
 <style>
-  .main-bg {
-    min-height: 100vh;
-    background: #FFFFFF;
-    position: relative;
-    overflow: visible;
-  }
+/* ========================================
+   IMPORTAR FUENTES DE GOOGLE FONTS
+======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ========================================
+   CONFIGURACIÓN GLOBAL DE FUENTES
+======================================== */
+
+/* Fuente base para todo el sitio - Poppins */
+* {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+body {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* Títulos principales (h1) - Bebas Neue */
+h1, 
+.display-1, 
+.display-2, 
+.main-title {
+  font-family: 'Bebas Neue', cursive !important;
+  letter-spacing: 3px !important;
+  font-weight: 400 !important;
+}
+
+/* Subtítulos (h2, h3) - Bebas Neue */
+h2, 
+h3, 
+.headline,
+.v-card-title {
+  font-family: 'Bebas Neue', cursive !important;
+  letter-spacing: 2px !important;
+  font-weight: 400 !important;
+}
+
+/* Texto normal - Poppins */
+p, 
+span, 
+.v-card-text, 
+.v-card-text p,
+.v-list-item {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+}
+
+/* Botones - Poppins Bold */
+.v-btn {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: none !important;
+}
+
+/* Links - Poppins Medium */
+a {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 500 !important;
+}
+
+/* Navegación en el header - Poppins Bold */
+.v-app-bar .v-btn {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.8px !important;
+}
+
+/* Texto del carrusel - títulos Bebas Neue */
+.carrusel-texto h2 {
+  font-family: 'Bebas Neue', cursive !important;
+  letter-spacing: 2px !important;
+}
+
+/* Texto del carrusel - descripción Poppins */
+.carrusel-texto p {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 400 !important;
+}
+
+/* ========================================
+   ESTILOS ORIGINALES DEL DISEÑO
+======================================== */
+
+.main-bg {
+  min-height: 100vh;
+  background: #FFFFFF;
+  position: relative;
+  overflow: visible;
+}
+
 .main-bg::after {
   content: '';
   position: absolute;
-  bottom: 60px; right: 8vw;
-  width: 140px; height: 140px;
+  bottom: 60px; 
+  right: 8vw;
+  width: 140px; 
+  height: 140px;
   background: url('https://img.icons8.com/color/96/000000/t-shirt.png') no-repeat center/contain;
   opacity: 0.10;
   z-index: 0;
 }
+
 .main-bg::before {
   content: '';
   position: absolute;
-  top: 40px; left: 5vw;
-  width: 100px; height: 100px;
+  top: 40px; 
+  left: 5vw;
+  width: 100px; 
+  height: 100px;
   background: url('https://img.icons8.com/color/96/000000/t-shirt.png') no-repeat center/contain;
   opacity: 0.08;
   z-index: 0;
 }
-  .main-bg .circle-orange {
-    position: absolute;
-    border-radius: 50%;
-    background: #FF9800;
-    opacity: 0.25;
-    z-index: 0;
-    box-shadow: 0 4px 24px #FF980044;
-    pointer-events: none;
-  }
-  .main-bg .circle-orange.c1 {
-    width: 180px;
-    height: 180px;
-    top: 18vh;
-    left: 8vw;
-  }
-  .main-bg .circle-orange.c2 {
-    width: 120px;
-    height: 120px;
-    bottom: 8vh;
-    right: 10vw;
-  }
-  .main-bg .circle-orange.c3 {
-    width: 90px;
-    height: 90px;
-    top: 55vh;
-    left: 65vw;
-  }
-  .main-bg .circle-blue {
-    position: absolute;
-    border-radius: 50%;
-    background: #1867C0;
-    opacity: 0.18;
-    z-index: 0;
-    box-shadow: 0 4px 24px #1867C044;
-    pointer-events: none;
-  }
-  .main-bg .circle-blue.c4 {
-    width: 120px;
-    height: 120px;
-    top: 10vh;
-    right: 12vw;
-  }
-  .main-bg .circle-blue.c5 {
-    width: 80px;
-    height: 80px;
-    bottom: 12vh;
-    left: 18vw;
-  }
+
+.main-bg .circle-orange {
+  position: absolute;
+  border-radius: 50%;
+  background: #FF9800;
+  opacity: 0.25;
+  z-index: 0;
+  box-shadow: 0 4px 24px #FF980044;
+  pointer-events: none;
+}
+
+.main-bg .circle-orange.c1 {
+  width: 180px;
+  height: 180px;
+  top: 18vh;
+  left: 8vw;
+}
+
+.main-bg .circle-orange.c2 {
+  width: 120px;
+  height: 120px;
+  bottom: 8vh;
+  right: 10vw;
+}
+
+.main-bg .circle-orange.c3 {
+  width: 90px;
+  height: 90px;
+  top: 55vh;
+  left: 65vw;
+}
+
+.main-bg .circle-blue {
+  position: absolute;
+  border-radius: 50%;
+  background: #1867C0;
+  opacity: 0.18;
+  z-index: 0;
+  box-shadow: 0 4px 24px #1867C044;
+  pointer-events: none;
+}
+
+.main-bg .circle-blue.c4 {
+  width: 120px;
+  height: 120px;
+  top: 10vh;
+  right: 12vw;
+}
+
+.main-bg .circle-blue.c5 {
+  width: 80px;
+  height: 80px;
+  bottom: 12vh;
+  left: 18vw;
+}
+
 .v-main > .main-bg > * {
   position: relative;
   z-index: 1;
 }
-  .logo-img {
-    height: 72px;
-    margin-right: 18px;
-    filter: drop-shadow(0 2px 8px #FF9800aa);
-    border-radius: 12px;
-    background: #fff;
-    padding: 4px;
-  }
+
+.logo-img {
+  height: 72px;
+  margin-right: 18px;
+  filter: drop-shadow(0 2px 8px #FF9800aa);
+  border-radius: 12px;
+  background: #fff;
+  padding: 4px;
+}
+
 @media (max-width: 600px) {
   .logo-img {
     height: 90px;
@@ -191,7 +291,7 @@ function handleContacto() {
     text-overflow: unset;
   }
 }
-/* Sin estilos extra para el menú, vuelve al diseño horizontal clásico */
+
 .saludo-hola-mundo {
   width: 100vw;
   text-align: center;
@@ -204,6 +304,7 @@ function handleContacto() {
   position: relative;
   z-index: 10;
 }
+
 .inicio-carrusel-full {
   width: 100vw;
   max-width: 100vw;
@@ -212,10 +313,12 @@ function handleContacto() {
   position: relative;
   z-index: 2;
 }
+
 .inicio-carrusel-full .v-carousel {
   border-radius: 0;
   box-shadow: 0 8px 32px #2F2E8344;
 }
+
 .carrusel-texto {
   position: absolute;
   bottom: 32px;
@@ -227,18 +330,20 @@ function handleContacto() {
   box-shadow: 0 4px 24px #1A1A1A44;
   max-width: 70vw;
 }
+
 .carrusel-texto h2 {
   margin: 0 0 8px 0;
   font-size: 2rem;
   color: #F47B20;
   font-weight: bold;
-  letter-spacing: 1px;
 }
+
 .carrusel-texto p {
   margin: 0;
   font-size: 1.15rem;
   color: #fff;
 }
+
 .whatsapp-float {
   position: fixed;
   right: 32px;
@@ -251,11 +356,9 @@ function handleContacto() {
   cursor: pointer;
   transition: box-shadow 0.2s, transform 0.2s;
 }
+
 .whatsapp-float:hover {
   box-shadow: 0 8px 32px #25D36688;
   transform: scale(1.08);
 }
 </style>
-
-
-

@@ -1,8 +1,8 @@
 <template>
   <section id="casos">
     <v-container>
-  <h1 class="mb-8 font-weight-bold" style="color:#2F2E83; letter-spacing:2px; text-shadow:0 2px 12px #F47B2044;">Casos de Éxito</h1>
-  <v-divider class="mb-8" color="#E5E5E5"></v-divider>
+      <h1 class="mb-8 font-weight-bold" style="color:#2F2E83; letter-spacing:3px; text-shadow:0 2px 12px #F47B2044;">Casos de Éxito</h1>
+      <v-divider class="mb-8" color="#E5E5E5"></v-divider>
       <v-row>
         <v-col cols="12" md="6" v-for="caso in casos" :key="caso.titulo">
           <v-hover v-slot="{ isHovering, props }">
@@ -10,7 +10,7 @@
               <v-img :src="caso.img" height="220px" class="rounded-t-lg" style="box-shadow:0 4px 16px #2F2E8344;" />
               <v-card-title class="font-weight-bold" style="color:#F47B20;">{{ caso.titulo }}</v-card-title>
               <v-card-text>
-                <p style="font-size:1.1rem; color:#4A4A4A;">{{ caso.historia }}</p>
+                <p style="font-size:1.05rem; color:#4A4A4A; line-height:1.6;">{{ caso.historia }}</p>
               </v-card-text>
             </v-card>
           </v-hover>
@@ -43,7 +43,6 @@ export default {
         },
       ],
     };
-
   },
 };
 </script>
@@ -58,8 +57,4 @@ export default {
   box-shadow: 0 8px 32px #FF9800AA;
   transform: scale(1.03);
 }
-</style>
-
-<style scoped>
-/* Estilos personalizados */
 </style>

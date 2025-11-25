@@ -8,19 +8,19 @@
           </div>
         </v-col>
         <v-col cols="12" md="6" class="d-flex flex-column align-center">
-          <h2 style="color:#F47B20;font-weight:bold;letter-spacing:1px;margin-bottom:8px;">Contáctenos</h2>
+          <h2 style="color:#F47B20;font-weight:bold;letter-spacing:2px;margin-bottom:12px;">Contáctenos</h2>
           <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:24px;">
             <div style="display:flex;align-items:center;gap:8px;">
               <v-icon color="#F47B20" size="28">mdi-whatsapp</v-icon>
-              <a href="https://wa.me/50377370216" target="_blank" style="color:#2F2E83;font-weight:bold;text-decoration:none;">+503 7737 0216</a>
+              <a href="https://wa.me/50377370216" target="_blank" style="color:#2F2E83;font-weight:600;text-decoration:none;">+503 7737 0216</a>
             </div>
             <div style="display:flex;align-items:center;gap:8px;">
               <v-icon color="#2F2E83" size="28">mdi-email</v-icon>
-              <a href="mailto:info@f5consultoria.com" style="color:#2F2E83;font-weight:bold;text-decoration:none;">info@f5consultoria.com</a>
+              <a href="mailto:info@f5consultoria.com" style="color:#2F2E83;font-weight:600;text-decoration:none;">info@f5consultoria.com</a>
             </div>
             <div style="display:flex;align-items:center;gap:8px;">
               <v-icon color="#2F2E83" size="28">mdi-map-marker</v-icon>
-              <span style="color:#2F2E83;font-weight:bold;">El Congo, Santa Ana, El Salvador</span>
+              <span style="color:#2F2E83;font-weight:600;">El Congo, Santa Ana, El Salvador</span>
             </div>
           </div>
         </v-col>
@@ -42,24 +42,13 @@
         </v-col>
       </v-row>
       <v-row justify="center" align="center" class="mt-4">
-        <v-col cols="12" class="text-center" style="color:#4A4A4A;font-size:1rem;">
+        <v-col cols="12" class="text-center" style="color:#4A4A4A;font-size:0.95rem;">
           &copy; 2025 <span style="color:#2F2E83;font-weight:bold;">F5 Consultoría & Marketing</span>. Todos los derechos reservados.
         </v-col>
       </v-row>
     </v-container>
   </footer>
-
-
 </template>
-
-<style scoped>
-    .footer-bg {
-      background: linear-gradient(90deg, #E5E5E5 0%, #FFFFFF 100%);
-      box-shadow: 0 -4px 24px #1A1A1A22;
-      border-radius: 24px 24px 0 0;
-      border-top: 4px solid #F47B20;
-    }
-</style>
 
 <script>
 export default {
@@ -68,5 +57,10 @@ export default {
 </script>
 
 <style scoped>
-/* Estilos personalizados */
+.footer-bg {
+  background: linear-gradient(90deg, #E5E5E5 0%, #FFFFFF 100%);
+  box-shadow: 0 -4px 24px #1A1A1A22;
+  border-radius: 24px 24px 0 0;
+  border-top: 4px solid #F47B20;
+}
 </style>

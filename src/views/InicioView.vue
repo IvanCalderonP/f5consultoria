@@ -21,7 +21,7 @@
           </v-carousel>
         </div>
         <v-card elevation="12" class="pa-8" rounded="xl" style="margin-top:32px;">
-          <h1 class="display-2 font-weight-bold mb-6 main-title" style="color:#2F2E83;text-shadow:0 2px 12px #F47B2044,0 2px 0 #fff;letter-spacing:2px;">
+          <h1 class="display-2 font-weight-bold mb-6 main-title" style="color:#2F2E83;text-shadow:0 2px 12px #F47B2044,0 2px 0 #fff;letter-spacing:3px;">
             Transformamos tus<br>
             ideas en impresión<br>
             profesional.
@@ -43,58 +43,6 @@
     </v-row>
   </v-container>
 </template>
-
-<style scoped>
-/* Estilo eliminado */
-.inicio-carrusel-full {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
-  position: relative;
-  z-index: 2;
-}
-.inicio-carrusel-full .v-carousel {
-  border-radius: 0;
-  box-shadow: 0 8px 32px #2F2E8344;
-}
-.carrusel-texto {
-  position: absolute;
-  bottom: 32px;
-  left: 32px;
-  background: rgba(44,44,44,0.65);
-  color: #fff;
-  padding: 18px 32px;
-  border-radius: 18px;
-  box-shadow: 0 4px 24px #1A1A1A44;
-  max-width: 70vw;
-}
-.cotiza-btn {
-  background: #F47B20 !important;
-  color: #fff !important;
-  font-weight: bold;
-  font-size: 1.1rem;
-  border-radius: 32px;
-  box-shadow: 0 6px 24px #F47B2044;
-  min-width: 120px;
-  height: 40px;
-  transition: background 0.2s;
-}
-.cotiza-btn:hover {
-  background: #25D366 !important;
-  color: #fff !important;
-}
-
-.carrusel-img-zoom {
-  transition: transform 0.7s cubic-bezier(.25,.8,.25,1), box-shadow 0.7s;
-}
-.carrusel-img-zoom:hover {
-  transform: scale(1.13);
-  box-shadow: 0 12px 32px #F47B2044;
-  z-index: 2;
-}
-
-</style>
 
 <script>
 import InicioSection from '../components/InicioSection.vue';
@@ -123,3 +71,64 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.inicio-carrusel-full {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  z-index: 2;
+}
+.inicio-carrusel-full .v-carousel {
+  border-radius: 0;
+  box-shadow: 0 8px 32px #2F2E8344;
+}
+.carrusel-texto {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  background: rgba(44,44,44,0.65);
+  color: #fff;
+  padding: 18px 32px;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #1A1A1A44;
+  max-width: 70vw;
+}
+.carrusel-texto h2 {
+  margin: 0 0 8px 0;
+  font-size: 2rem;
+  color: #F47B20;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.carrusel-texto p {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #fff;
+}
+.cotiza-btn {
+  background: #F47B20 !important;
+  color: #fff !important;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border-radius: 32px;
+  box-shadow: 0 6px 24px #F47B2044;
+  min-width: 120px;
+  height: 40px;
+  transition: background 0.2s;
+}
+.cotiza-btn:hover {
+  background: #e76b10 !important;
+}
+.carrusel-img-zoom {
+  transition: transform 0.5s ease;
+}
+.carrusel-img-zoom:hover {
+  transform: scale(1.05);
+}
+.main-title {
+  line-height: 1.2;
+}
+</style>
