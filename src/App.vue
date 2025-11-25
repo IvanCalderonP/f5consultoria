@@ -1,32 +1,34 @@
 <template>
   <v-app>
-    <v-app-bar app dark elevation="8" style="background: linear-gradient(90deg, #2F2E83 0%, #F47B20 50%, #1A1A1A 100%); border-radius: 0 0 24px 24px; box-shadow: 0 8px 32px #2F2E8344;">
+    <v-app-bar app elevation="8" :class="isDark ? 'app-bar-dark' : 'app-bar-light'">
       <v-toolbar-title class="d-flex align-center">
         <img :src="logo" alt="Logo" height="72" style="margin-right: 18px; filter: drop-shadow(0 2px 8px #F47B2044); border-radius: 12px; background: transparent; padding: 4px;" />
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-row class="d-none d-md-flex">
-        <v-btn text to="/" style="color:#FFFFFF;font-weight:bold;">Inicio</v-btn>
-        <v-btn text to="/servicios" style="color:#FFFFFF;font-weight:bold;">Servicios</v-btn>
-        <v-btn text to="/casos" style="color:#FFFFFF;font-weight:bold;">Casos de Éxito</v-btn>
-        <v-btn text to="/educativa" style="color:#FFFFFF;font-weight:bold;">Sección Educativa</v-btn>
+        <v-btn text to="/" :style="btnStyle">Inicio</v-btn>
+        <v-btn text to="/productos" :style="btnStyle">Productos</v-btn>
+        <v-btn text to="/casos" :style="btnStyle">Casos de Éxito</v-btn>
+        <v-btn text to="/educativa" :style="btnStyle">Sección Educativa</v-btn>
+        <v-btn text to="/servicios" :style="btnStyle">Servicios</v-btn>
         <v-btn text @click="scrollToFooter" style="color:#F47B20;font-weight:bold;">Contáctenos</v-btn>
       </v-row>
       <v-btn icon class="d-md-none" @click="drawer = true">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-navigation-drawer v-model="drawer" temporary right>
+    <v-navigation-drawer v-model="drawer" temporary right :class="isDark ? 'drawer-dark' : 'drawer-light'">
       <v-list>
         <v-list-item @click="goTo('/')">Inicio</v-list-item>
-        <v-list-item @click="goTo('/servicios')">Servicios</v-list-item>
+        <v-list-item @click="goTo('/productos')">Productos</v-list-item>
         <v-list-item @click="goTo('/casos')">Casos de Éxito</v-list-item>
         <v-list-item @click="goTo('/educativa')">Sección Educativa</v-list-item>
+        <v-list-item @click="goTo('/servicios')">Servicios</v-list-item>
         <v-list-item @click="handleContacto">Contáctenos</v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-main>
-      <div class="main-bg">
+      <div :class="isDark ? 'main-bg-dark' : 'main-bg-light'">
         <span class="circle-orange c1"></span>
         <span class="circle-orange c2"></span>
         <span class="circle-orange c3"></span>
@@ -41,9 +43,9 @@
             <v-icon size="48" color="#F47B20">mdi-whatsapp</v-icon>
           </div>
         </template>
-        <v-card>
-          <v-card-title class="headline" style="color:#2F2E83;font-weight:bold;">Contáctenos</v-card-title>
-          <v-card-text style="color:#4A4A4A;">
+        <v-card :class="isDark ? 'dialog-dark' : 'dialog-light'">
+          <v-card-title class="headline" :style="{color: isDark ? '#F47B20' : '#2F2E83', fontWeight: 'bold'}">Contáctenos</v-card-title>
+          <v-card-text :style="{color: isDark ? '#E5E5E5' : '#4A4A4A'}">
             ¿Necesitas ayuda? Escríbenos por WhatsApp y te atenderemos de inmediato.
           </v-card-text>
           <v-card-actions>
@@ -60,7 +62,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import ContactoSection from './components/ContactoSection.vue';
 import logo from './assets/logo.png';
@@ -68,6 +70,23 @@ import logo from './assets/logo.png';
 const drawer = ref(false);
 const router = useRouter();
 const showContacto = ref(false);
+const isDark = ref(false);
+
+// Detectar modo oscuro del sistema
+onMounted(() => {
+  const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  isDark.value = darkModeQuery.matches;
+  
+  // Escuchar cambios en el modo oscuro
+  darkModeQuery.addEventListener('change', (e) => {
+    isDark.value = e.matches;
+  });
+});
+
+const btnStyle = computed(() => ({
+  color: isDark.value ? '#FFFFFF' : '#2F2E83',
+  fontWeight: 'bold'
+}));
 
 function goTo(path) {
   router.push(path);
@@ -171,17 +190,111 @@ a {
 }
 
 /* ========================================
-   ESTILOS ORIGINALES DEL DISEÑO
+   MODO CLARO
 ======================================== */
 
-.main-bg {
+.app-bar-light {
+  background: linear-gradient(90deg, #2F2E83 0%, #F47B20 50%, #1A1A1A 100%) !important;
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 8px 32px #2F2E8344;
+}
+
+.main-bg-light {
   min-height: 100vh;
   background: #FFFFFF;
   position: relative;
   overflow: visible;
 }
 
-.main-bg::after {
+.main-bg-light h1,
+.main-bg-light h2,
+.main-bg-light h3 {
+  color: #2F2E83 !important;
+}
+
+.main-bg-light p,
+.main-bg-light span {
+  color: #1A1A1A !important;
+}
+
+.drawer-light {
+  background: #FFFFFF !important;
+}
+
+.drawer-light .v-list-item {
+  color: #2F2E83 !important;
+}
+
+.dialog-light {
+  background: #FFFFFF !important;
+}
+
+/* ========================================
+   MODO OSCURO
+======================================== */
+
+.app-bar-dark {
+  background: linear-gradient(90deg, #1A1A3E 0%, #F47B20 50%, #0D0D0D 100%) !important;
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 8px 32px #00000088;
+}
+
+.main-bg-dark {
+  min-height: 100vh;
+  background: #1A1A3E;
+  position: relative;
+  overflow: visible;
+}
+
+.main-bg-dark h1,
+.main-bg-dark h2,
+.main-bg-dark h3 {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 12px #F47B2044;
+}
+
+.main-bg-dark p,
+.main-bg-dark span {
+  color: #E5E5E5 !important;
+}
+
+.main-bg-dark .v-card {
+  background: #2A2A4E !important;
+  color: #FFFFFF !important;
+}
+
+.main-bg-dark .v-card-title {
+  color: #F47B20 !important;
+}
+
+.main-bg-dark .v-card-text,
+.main-bg-dark .v-card-text p {
+  color: #E5E5E5 !important;
+}
+
+.drawer-dark {
+  background: #2A2A4E !important;
+}
+
+.drawer-dark .v-list-item {
+  color: #FFFFFF !important;
+}
+
+.drawer-dark .v-list-item:hover {
+  background: rgba(244, 123, 32, 0.2) !important;
+}
+
+.dialog-dark {
+  background: #2A2A4E !important;
+  color: #FFFFFF !important;
+}
+
+/* ========================================
+   ESTILOS COMPARTIDOS
+======================================== */
+
+.main-bg-light::after,
+.main-bg-dark::after {
   content: '';
   position: absolute;
   bottom: 60px; 
@@ -193,7 +306,8 @@ a {
   z-index: 0;
 }
 
-.main-bg::before {
+.main-bg-light::before,
+.main-bg-dark::before {
   content: '';
   position: absolute;
   top: 40px; 
@@ -205,7 +319,8 @@ a {
   z-index: 0;
 }
 
-.main-bg .circle-orange {
+.main-bg-light .circle-orange,
+.main-bg-dark .circle-orange {
   position: absolute;
   border-radius: 50%;
   background: #FF9800;
@@ -215,28 +330,32 @@ a {
   pointer-events: none;
 }
 
-.main-bg .circle-orange.c1 {
+.main-bg-light .circle-orange.c1,
+.main-bg-dark .circle-orange.c1 {
   width: 180px;
   height: 180px;
   top: 18vh;
   left: 8vw;
 }
 
-.main-bg .circle-orange.c2 {
+.main-bg-light .circle-orange.c2,
+.main-bg-dark .circle-orange.c2 {
   width: 120px;
   height: 120px;
   bottom: 8vh;
   right: 10vw;
 }
 
-.main-bg .circle-orange.c3 {
+.main-bg-light .circle-orange.c3,
+.main-bg-dark .circle-orange.c3 {
   width: 90px;
   height: 90px;
   top: 55vh;
   left: 65vw;
 }
 
-.main-bg .circle-blue {
+.main-bg-light .circle-blue,
+.main-bg-dark .circle-blue {
   position: absolute;
   border-radius: 50%;
   background: #1867C0;
@@ -246,21 +365,23 @@ a {
   pointer-events: none;
 }
 
-.main-bg .circle-blue.c4 {
+.main-bg-light .circle-blue.c4,
+.main-bg-dark .circle-blue.c4 {
   width: 120px;
   height: 120px;
   top: 10vh;
   right: 12vw;
 }
 
-.main-bg .circle-blue.c5 {
+.main-bg-light .circle-blue.c5,
+.main-bg-dark .circle-blue.c5 {
   width: 80px;
   height: 80px;
   bottom: 12vh;
   left: 18vw;
 }
 
-.v-main > .main-bg > * {
+.v-main > div > * {
   position: relative;
   z-index: 1;
 }
@@ -297,7 +418,6 @@ a {
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
-  color: #2F2E83;
   margin-top: 0;
   margin-bottom: 0.5rem;
   background: transparent;
@@ -323,7 +443,7 @@ a {
   position: absolute;
   bottom: 32px;
   left: 32px;
-  background: rgba(44,44,44,0.65);
+  background: rgba(44,44,44,0.85);
   color: #fff;
   padding: 18px 32px;
   border-radius: 18px;

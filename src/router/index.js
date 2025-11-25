@@ -1,11 +1,5 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-
-import InicioView from '../views/InicioView.vue';
-import ServiciosView from '../views/ServiciosView.vue';
-import CasosView from '../views/CasosView.vue';
-import EducativaView from '../views/EducativaView.vue';
-import ContactoView from '../views/ContactoView.vue';
+import { createRouter, createWebHistory } from 'vue-router'
+import InicioView from '../views/InicioView.vue'
 
 const routes = [
   {
@@ -14,37 +8,30 @@ const routes = [
     component: InicioView
   },
   {
-    path: '/servicios',
-    name: 'servicios',
-    component: ServiciosView
+    path: '/productos',
+    name: 'productos',
+    component: () => import('../views/ProductosView.vue')
   },
   {
     path: '/casos',
     name: 'casos',
-    component: CasosView
+    component: () => import('../views/CasosView.vue')
   },
   {
     path: '/educativa',
     name: 'educativa',
-    component: EducativaView
+    component: () => import('../views/EducativaView.vue')
   },
   {
-    path: '/contacto',
-    name: 'contacto',
-    component: ContactoView
+    path: '/servicios',
+    name: 'servicios',
+    component: () => import('../views/ServiciosView.vue')
   }
-];
+]
 
 const router = createRouter({
-  history: createWebHashHistory(),
-  routes,
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    } else {
-      return { top: 0 };
-    }
-  }
+  history: createWebHistory(process.env.BASE_URL),
+  routes
 })
 
 export default router

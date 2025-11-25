@@ -3,7 +3,7 @@
     <v-row justify="center">
       <v-col cols="12" md="10">
         <v-card elevation="12" class="pa-8 card-gradient" rounded="xl">
-          <servicios-section />
+          <productos-section />
         </v-card>
       </v-col>
     </v-row>
@@ -19,8 +19,8 @@
 </style>
 
 <script>
-import ServiciosSection from '../components/ServiciosSection.vue';
+import ProductosSection from '../components/ProductosSection.vue';
 export default {
-  components: { ServiciosSection }
+  components: { ProductosSection }
 };
 </script>
