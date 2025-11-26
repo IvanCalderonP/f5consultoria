@@ -11,7 +11,12 @@
             delimiter-icon="mdi-circle"
           >
             <v-carousel-item v-for="(slide, i) in slides" :key="i">
-              <v-img :src="slide.img" height="520" cover class="carrusel-img-zoom">
+              <v-img
+                :src="slide.img"
+                height="520"
+                cover
+                class="carrusel-img-zoom"
+              >
                 <div class="carrusel-texto">
                   <h2>{{ slide.titulo }}</h2>
                   <p>{{ slide.descripcion }}</p>
@@ -20,13 +25,33 @@
             </v-carousel-item>
           </v-carousel>
         </div>
-        <v-card elevation="12" class="pa-8" rounded="xl" style="margin-top:32px;">
-          <h1 class="display-2 font-weight-bold mb-6 main-title" style="color:#2F2E83;text-shadow:0 2px 12px #F47B2044,0 2px 0 #fff;letter-spacing:3px;">
-            Transformamos tus<br>
-            ideas en impresión<br>
+        <v-card
+          elevation="12"
+          class="pa-8"
+          rounded="xl"
+          style="margin-top: 32px"
+        >
+          <h1
+            class="display-2 font-weight-bold mb-6 main-title"
+            style="
+              color: #2f2e83;
+              text-shadow: 0 2px 12px #f47b2044, 0 2px 0 #fff;
+              letter-spacing: 3px;
+            "
+          >
+            Transformamos tus<br />
+            ideas en impresión<br />
             profesional.
           </h1>
-          <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 24px;">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 16px;
+              margin-top: 24px;
+            "
+          >
             <v-icon size="56" color="#F47B20">mdi-whatsapp</v-icon>
             <v-btn
               class="cotiza-btn"
@@ -45,30 +70,32 @@
 </template>
 
 <script>
-import InicioSection from '../components/InicioSection.vue';
+import InicioSection from "../components/InicioSection.vue";
 export default {
   components: { InicioSection },
   data() {
     return {
       slides: [
         {
-          img: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=900&q=80',
-          titulo: '¡Promoción de Camisas!',
-          descripcion: 'Aprovecha descuentos especiales en camisas personalizadas.'
+          img: require("@/assets/FOTOGRAFIA - PAGINA F5/5- DTF y Textiles/40- Camiseta Estampada.png"),
+          titulo: "¡Promoción de Camisas!",
+          descripcion:
+            "Aprovecha descuentos especiales en camisas personalizadas.",
         },
         {
-          img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80',
-          titulo: 'Gorras Exclusivas',
-          descripcion: 'Nuevos modelos de gorras con tu logo o diseño favorito.'
+          img: require("@/assets/FOTOGRAFIA - PAGINA F5/5- DTF y Textiles/37- Gorra Sublimada.png"),
+          titulo: "Gorras Exclusivas",
+          descripcion:
+            "Nuevos modelos de gorras con tu logo o diseño favorito.",
         },
         {
-          img: 'https://images.unsplash.com/photo-1465101178521-c1a6f3b4e8a6?auto=format&fit=crop&w=900&q=80',
-          titulo: 'Termos y Regalos',
-          descripcion: 'Personaliza termos, llaveros y más para tu empresa.'
-        }
-      ]
+          img: require("@/assets/FOTOGRAFIA - PAGINA F5/4- Sublimación/28- Botellas.png"),
+          titulo: "Termos y Regalos",
+          descripcion: "Personaliza termos, llaveros y más para tu empresa.",
+        },
+      ],
     };
-  }
+  },
 };
 </script>
 
@@ -83,23 +110,23 @@ export default {
 }
 .inicio-carrusel-full .v-carousel {
   border-radius: 0;
-  box-shadow: 0 8px 32px #2F2E8344;
+  box-shadow: 0 8px 32px #2f2e8344;
 }
 .carrusel-texto {
   position: absolute;
   bottom: 32px;
   left: 32px;
-  background: rgba(44,44,44,0.65);
+  background: rgba(44, 44, 44, 0.65);
   color: #fff;
   padding: 18px 32px;
   border-radius: 18px;
-  box-shadow: 0 4px 24px #1A1A1A44;
+  box-shadow: 0 4px 24px #1a1a1a44;
   max-width: 70vw;
 }
 .carrusel-texto h2 {
   margin: 0 0 8px 0;
   font-size: 2rem;
-  color: #F47B20;
+  color: #f47b20;
   font-weight: bold;
   letter-spacing: 2px;
 }
@@ -109,12 +136,12 @@ export default {
   color: #fff;
 }
 .cotiza-btn {
-  background: #F47B20 !important;
+  background: #f47b20 !important;
   color: #fff !important;
   font-weight: bold;
   font-size: 1.1rem;
   border-radius: 32px;
-  box-shadow: 0 6px 24px #F47B2044;
+  box-shadow: 0 6px 24px #f47b2044;
   min-width: 120px;
   height: 40px;
   transition: background 0.2s;

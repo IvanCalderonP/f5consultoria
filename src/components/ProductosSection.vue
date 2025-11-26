@@ -4,329 +4,447 @@
       <h1
         class="mb-8 font-weight-bold"
         style="
-          color: #2f2e83;
+          color: #ffffff;
           letter-spacing: 3px;
-          text-shadow: 0 2px 12px #f47b2044;
+          text-shadow: 0 2px 12px #00000044;
         "
       >
         Servicios y Productos
       </h1>
-
+      <h2 class="mb-4 mt-8" style="color: #ffffff; letter-spacing: 2px">
+        Impresión Laser
+      </h2>
       <v-row>
-        <v-col cols="12" md="6">
+        <v-col cols="12">
+          <p style="color: rgba(255, 255, 255, 0.85); margin-top: 0">
+            <strong>Incluye:</strong> {{ impresionLaserTitles.join(", ") }}
+          </p>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col
+          cols="12"
+          sm="6"
+          md="3"
+          v-for="(img, idx) in impresionLaserImgs"
+          :key="'imp-item-' + idx"
+        >
           <v-card
             class="servicio-card"
-            elevation="10"
-            rounded="xl"
-            style="background: #ffffff; box-shadow: 0 4px 16px #e5e5e5"
+            elevation="8"
+            rounded="lg"
+            @click="
+              openDialog(
+                img,
+                impresionLaserTitles[idx],
+                'Descripción breve del producto o servicio.'
+              )
+            "
           >
-            <v-card-title
-              class="font-weight-bold d-flex align-center"
-              style="color: #1a1a1a"
-            >
-              <v-icon color="#F47B20" class="mr-2">mdi-tshirt-crew</v-icon>
-              Camisas Estampadas
-            </v-card-title>
-            <v-card-text style="color: #4a4a4a">
-              <p>Personalización de camisas con estampados de alta calidad.</p>
-              <v-carousel hide-delimiter-background height="200">
-                <v-carousel-item v-for="img in estampadasImgs" :key="img">
-                  <v-img :src="img" alt="Camisa estampada" class="rounded-lg" />
-                </v-carousel-item>
-              </v-carousel>
-            </v-card-text>
+            <v-row class="align-center pa-3">
+              <v-col cols="4">
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-img
+                      v-bind="attrs"
+                      v-on="on"
+                      :src="img"
+                      height="110"
+                      contain
+                      class="rounded-lg"
+                    />
+                  </template>
+                  <span>{{ impresionLaserTitles[idx] }}</span>
+                </v-tooltip>
+              </v-col>
+              <v-col cols="8">
+                <div class="subtitle-1" style="font-weight: 700">
+                  {{ impresionLaserTitles[idx] }}
+                </div>
+                <div style="font-size: 1rem; color: rgba(255, 255, 255, 0.85)">
+                  Descripción breve del producto o servicio.
+                </div>
+              </v-col>
+            </v-row>
           </v-card>
         </v-col>
-        <v-col cols="12" md="6">
+      </v-row>
+
+      <h2 class="mb-4 mt-8" style="color: #ffffff; letter-spacing: 2px">
+        Display Publicitarios
+      </h2>
+      <v-row>
+        <v-col cols="12">
+          <p style="color: rgba(255, 255, 255, 0.85); margin-top: 0">
+            <strong>Incluye:</strong> {{ displayTitles.join(", ") }}
+          </p>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col
+          cols="12"
+          sm="6"
+          md="4"
+          v-for="(img, idx) in displayImgs"
+          :key="'disp-' + idx"
+        >
           <v-card
             class="servicio-card"
-            elevation="10"
-            rounded="xl"
-            style="background: #ffffff; box-shadow: 0 4px 16px #e5e5e5"
+            elevation="8"
+            rounded="lg"
+            @click="
+              openDialog(
+                img,
+                displayTitles[idx],
+                'Soportes y displays personalizados para puntos de venta y eventos.'
+              )
+            "
           >
-            <v-card-title
-              class="font-weight-bold d-flex align-center"
-              style="color: #1a1a1a"
-            >
-              <v-icon color="#2F2E83" class="mr-2"
-                >mdi-tshirt-crew-outline</v-icon
-              >
-              Camisas Sublimadas
-            </v-card-title>
-            <v-card-text style="color: #4a4a4a">
-              <p>Camisas sublimadas con diseños vibrantes y duraderos.</p>
-              <v-carousel hide-delimiter-background height="200">
-                <v-carousel-item v-for="img in sublimadasImgs" :key="img">
-                  <v-img :src="img" alt="Camisa sublimada" class="rounded-lg" />
-                </v-carousel-item>
-              </v-carousel>
-            </v-card-text>
+            <v-row class="align-center pa-3">
+              <v-col cols="4">
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-img
+                      v-bind="attrs"
+                      v-on="on"
+                      :src="img"
+                      height="110"
+                      contain
+                      class="rounded-lg"
+                    />
+                  </template>
+                  <span>{{ displayTitles[idx] }}</span>
+                </v-tooltip>
+              </v-col>
+              <v-col cols="8">
+                <div class="subtitle-1" style="font-weight: 700">
+                  {{ displayTitles[idx] }}
+                </div>
+                <div style="font-size: 1rem; color: rgba(255, 255, 255, 0.85)">
+                  Soportes y displays personalizados para puntos de venta y
+                  eventos.
+                </div>
+              </v-col>
+            </v-row>
           </v-card>
         </v-col>
       </v-row>
 
+      <!-- Categoría: Sublimados -->
+      <h2 class="mb-4 mt-8" style="color: #ffffff; letter-spacing: 2px">
+        Sublimados
+      </h2>
       <v-row>
-        <v-col cols="12" md="6">
+        <v-col cols="12">
+          <p style="color: rgba(255, 255, 255, 0.85); margin-top: 0">
+            <strong>Incluye:</strong> {{ sublimacionGalleryTitles.join(", ") }}
+          </p>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col
+          cols="12"
+          sm="6"
+          md="4"
+          v-for="(img, idx) in sublimacionGalleryImgs"
+          :key="'sub-card-' + idx"
+        >
           <v-card
             class="servicio-card"
-            elevation="10"
-            rounded="xl"
-            style="background: #ffffff; box-shadow: 0 4px 16px #e5e5e5"
+            elevation="8"
+            rounded="lg"
+            @click="
+              openDialog(
+                img,
+                sublimacionGalleryTitles[idx],
+                'Productos personalizados por sublimación.'
+              )
+            "
           >
-            <v-card-title
-              class="font-weight-bold d-flex align-center"
-              style="color: #1a1a1a"
-            >
-              <v-icon color="#F47B20" class="mr-2">mdi-hat-fedora</v-icon>
-              Gorras Personalizadas
-            </v-card-title>
-            <v-card-text style="color: #4a4a4a">
-              <p>Gorras con tu logo, frase o diseño favorito.</p>
-              <v-carousel hide-delimiter-background height="200">
-                <v-carousel-item v-for="img in gorrasImgs" :key="img">
-                  <v-img
-                    :src="img"
-                    alt="Gorra personalizada"
-                    class="rounded-lg"
-                  />
-                </v-carousel-item>
-              </v-carousel>
-            </v-card-text>
-          </v-card>
-        </v-col>
-        <v-col cols="12" md="6">
-          <v-card class="servicio-card" elevation="10" rounded="xl">
-            <v-card-title class="font-weight-bold d-flex align-center">
-              <v-icon color="#FF9800" class="mr-2">mdi-bottle-tonic</v-icon>
-              Termos Personalizados
-            </v-card-title>
-            <v-card-text>
-              <p>Termos con impresión personalizada para empresas o regalos.</p>
-              <v-carousel hide-delimiter-background height="200">
-                <v-carousel-item v-for="img in termosImgs" :key="img">
-                  <v-img
-                    :src="img"
-                    alt="Termo personalizado"
-                    class="rounded-lg"
-                  />
-                </v-carousel-item>
-              </v-carousel>
-            </v-card-text>
+            <v-row class="align-center pa-3">
+              <v-col cols="4">
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-img
+                      v-bind="attrs"
+                      v-on="on"
+                      :src="img"
+                      height="110"
+                      contain
+                      class="rounded-lg"
+                    />
+                  </template>
+                  <span>{{ sublimacionGalleryTitles[idx] }}</span>
+                </v-tooltip>
+              </v-col>
+              <v-col cols="8">
+                <div class="subtitle-1" style="font-weight: 700">
+                  {{ sublimacionGalleryTitles[idx] }}
+                </div>
+                <div style="font-size: 1rem; color: rgba(255, 255, 255, 0.85)">
+                  Productos personalizados por sublimación.
+                </div>
+              </v-col>
+            </v-row>
           </v-card>
         </v-col>
       </v-row>
 
+      <!-- Gran Formato / Banners -->
+      <h2 class="mb-4 mt-8" style="color: #ffffff; letter-spacing: 2px">
+        Gran Formato
+      </h2>
+
       <v-row>
-        <v-col cols="12" md="6">
-          <v-card class="servicio-card" elevation="10" rounded="xl">
-            <v-card-title class="font-weight-bold d-flex align-center">
-              <v-icon color="#1697F6" class="mr-2">mdi-pen</v-icon>
-              Lapiceros Personalizados
-            </v-card-title>
-            <v-card-text>
-              <p>Lapiceros con tu marca o diseño especial.</p>
-              <v-carousel hide-delimiter-background height="200">
-                <v-carousel-item v-for="img in lapicerosImgs" :key="img">
-                  <v-img
-                    :src="img"
-                    alt="Lapicero personalizado"
-                    class="rounded-lg"
-                  />
-                </v-carousel-item>
-              </v-carousel>
-            </v-card-text>
-          </v-card>
+        <v-col cols="12">
+          <p style="color: rgba(255, 255, 255, 0.85); margin-top: 0">
+            <strong>Incluye:</strong> {{ bannersTitles.join(", ") }}
+          </p>
         </v-col>
-        <v-col cols="12" md="6">
-          <v-card class="servicio-card" elevation="10" rounded="xl">
-            <v-card-title class="font-weight-bold d-flex align-center">
-              <v-icon color="#FF9800" class="mr-2">mdi-puzzle</v-icon>
-              Rompecabezas Personalizados
-            </v-card-title>
-            <v-card-text>
-              <p>Rompecabezas con imágenes, logos o mensajes únicos.</p>
-              <v-carousel hide-delimiter-background height="200">
-                <v-carousel-item v-for="img in rompecabezasImgs" :key="img">
-                  <v-img
-                    :src="img"
-                    alt="Rompecabezas personalizado"
-                    class="rounded-lg"
-                  />
-                </v-carousel-item>
-              </v-carousel>
-            </v-card-text>
+      </v-row>
+      <v-row>
+        <v-col
+          cols="12"
+          sm="6"
+          md="3"
+          v-for="(img, idx) in bannersImgs"
+          :key="'banner-' + idx"
+        >
+          <v-card
+            class="servicio-card"
+            elevation="8"
+            rounded="lg"
+            @click="
+              openDialog(
+                img,
+                bannersTitles[idx],
+                'Impresión gran formato y aplicaciones.'
+              )
+            "
+          >
+            <v-row class="align-center pa-3">
+              <v-col cols="4">
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-img
+                      v-bind="attrs"
+                      v-on="on"
+                      :src="img"
+                      height="110"
+                      contain
+                      class="rounded-lg"
+                    />
+                  </template>
+                  <span>{{ bannersTitles[idx] }}</span>
+                </v-tooltip>
+              </v-col>
+              <v-col cols="8">
+                <div class="subtitle-1" style="font-weight: 700">
+                  {{ bannersTitles[idx] }}
+                </div>
+                <div style="font-size: 1rem; color: rgba(255, 255, 255, 0.85)">
+                  Impresión gran formato y aplicaciones.
+                </div>
+              </v-col>
+            </v-row>
           </v-card>
         </v-col>
       </v-row>
 
+      <!-- Sección: DTF y Textiles -->
+      <h2 class="mb-4 mt-8" style="color: #ffffff; letter-spacing: 2px">
+        DTF y Textiles
+      </h2>
       <v-row>
-        <v-col cols="12" md="6">
-          <v-card class="servicio-card" elevation="10" rounded="xl">
-            <v-card-title class="font-weight-bold d-flex align-center">
-              <v-icon color="#1697F6" class="mr-2">mdi-key</v-icon>
-              Llaveros Personalizados
-            </v-card-title>
-            <v-card-text>
-              <p>Llaveros con formas y diseños personalizados.</p>
-              <v-carousel hide-delimiter-background height="200">
-                <v-carousel-item v-for="img in llaverosImgs" :key="img">
-                  <v-img
-                    :src="img"
-                    alt="Llavero personalizado"
-                    class="rounded-lg"
-                  />
-                </v-carousel-item>
-              </v-carousel>
-            </v-card-text>
-          </v-card>
+        <v-col cols="12">
+          <p style="color: rgba(255, 255, 255, 0.85); margin-top: 0">
+            <strong>Incluye:</strong> {{ dtfSectionTitles.join(", ") }}
+          </p>
         </v-col>
-        <v-col cols="12" md="6">
-          <v-card class="servicio-card" elevation="10" rounded="xl">
-            <v-card-title class="font-weight-bold d-flex align-center">
-              <v-icon color="#25D366" class="mr-2">mdi-billboard</v-icon>
-              Banners y Viniles
-            </v-card-title>
-            <v-card-text>
-              <p>Banners y viniles para publicidad, eventos y decoración.</p>
-              <v-carousel hide-delimiter-background height="200">
-                <v-carousel-item v-for="img in bannersImgs" :key="img">
-                  <v-img :src="img" alt="Banner o vinil" class="rounded-lg" />
-                </v-carousel-item>
-              </v-carousel>
-            </v-card-text>
+      </v-row>
+      <v-row>
+        <v-col
+          cols="12"
+          sm="6"
+          md="4"
+          v-for="(img, idx) in dtfSectionImgs"
+          :key="'dtf-' + idx"
+        >
+          <v-card
+            class="servicio-card"
+            elevation="8"
+            rounded="lg"
+            @click="
+              openDialog(
+                img,
+                dtfSectionTitles[idx],
+                'Textiles, estampados y bordados personalizados.'
+              )
+            "
+          >
+            <v-row class="align-center pa-3">
+              <v-col cols="4">
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-img
+                      v-bind="attrs"
+                      v-on="on"
+                      :src="img"
+                      height="110"
+                      contain
+                      class="rounded-lg"
+                    />
+                  </template>
+                  <span>{{ dtfSectionTitles[idx] }}</span>
+                </v-tooltip>
+              </v-col>
+              <v-col cols="8">
+                <div class="subtitle-1" style="font-weight: 700">
+                  {{ dtfSectionTitles[idx] }}
+                </div>
+                <div style="font-size: 1rem; color: rgba(255, 255, 255, 0.85)">
+                  Textiles, estampados y bordados personalizados.
+                </div>
+              </v-col>
+            </v-row>
           </v-card>
         </v-col>
       </v-row>
 
-      <!-- Secciones adicionales para las carpetas faltantes -->
+      <!-- Sección: Sellos y Carnetización -->
+      <h2 class="mb-4 mt-8" style="color: #ffffff; letter-spacing: 2px">
+        Sellos y Carnetización
+      </h2>
       <v-row>
-        <v-col cols="12" md="6">
-          <v-card class="servicio-card" elevation="10" rounded="xl">
-            <v-card-title class="font-weight-bold d-flex align-center">
-              <v-icon color="#2F2E83" class="mr-2">mdi-printer</v-icon>
-              Impresión Laser
-            </v-card-title>
-            <v-card-text>
-              <p>Impresión láser para papelería y material corporativo.</p>
-              <v-carousel hide-delimiter-background height="200">
-                <v-carousel-item v-for="img in impresionLaserImgs" :key="img">
-                  <v-img :src="img" alt="Impresión Laser" class="rounded-lg" />
-                </v-carousel-item>
-              </v-carousel>
-            </v-card-text>
-          </v-card>
+        <v-col cols="12">
+          <p style="color: rgba(255, 255, 255, 0.85); margin-top: 0">
+            <strong>Incluye:</strong> {{ sellosTitles.join(", ") }}
+          </p>
         </v-col>
-
-        <v-col cols="12" md="6">
-          <v-card class="servicio-card" elevation="10" rounded="xl">
-            <v-card-title class="font-weight-bold d-flex align-center">
-              <v-icon color="#F47B20" class="mr-2"
-                >mdi-television-classic</v-icon
-              >
-              Display Publicitarios
-            </v-card-title>
-            <v-card-text>
-              <p>
-                Displays y soportes publicitarios para eventos y puntos de
-                venta.
-              </p>
-              <v-carousel hide-delimiter-background height="200">
-                <v-carousel-item v-for="img in displayImgs" :key="img">
-                  <v-img
-                    :src="img"
-                    alt="Display Publicitario"
-                    class="rounded-lg"
-                  />
-                </v-carousel-item>
-              </v-carousel>
-            </v-card-text>
+      </v-row>
+      <v-row>
+        <v-col
+          cols="12"
+          sm="6"
+          md="4"
+          v-for="(img, idx) in sellosImgs"
+          :key="'sell-' + idx"
+        >
+          <v-card
+            class="servicio-card"
+            elevation="8"
+            rounded="lg"
+            @click="
+              openDialog(
+                img,
+                sellosTitles[idx],
+                'Carnets, lanyards y sellos personalizados.'
+              )
+            "
+          >
+            <v-row class="align-center pa-3">
+              <v-col cols="4">
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-img
+                      v-bind="attrs"
+                      v-on="on"
+                      :src="img"
+                      height="110"
+                      contain
+                      class="rounded-lg"
+                    />
+                  </template>
+                  <span>{{ sellosTitles[idx] }}</span>
+                </v-tooltip>
+              </v-col>
+              <v-col cols="8">
+                <div class="subtitle-1" style="font-weight: 700">
+                  {{ sellosTitles[idx] }}
+                </div>
+                <div style="font-size: 1rem; color: rgba(255, 255, 255, 0.85)">
+                  Carnets, lanyards y sellos personalizados.
+                </div>
+              </v-col>
+            </v-row>
           </v-card>
         </v-col>
       </v-row>
 
+      <!-- Sección: Estructuras Metálicas -->
+      <h2 class="mb-4 mt-8" style="color: #ffffff; letter-spacing: 2px">
+        Estructuras Metálicas
+      </h2>
       <v-row>
-        <v-col cols="12" md="6">
-          <v-card class="servicio-card" elevation="10" rounded="xl">
-            <v-card-title class="font-weight-bold d-flex align-center">
-              <v-icon color="#1697F6" class="mr-2">mdi-tshirt-crew</v-icon>
-              Sublimación
-            </v-card-title>
-            <v-card-text>
-              <p>Productos sublimados: tazas, termos, vasos y más.</p>
-              <v-carousel hide-delimiter-background height="200">
-                <v-carousel-item v-for="img in sublimacionImgs" :key="img">
-                  <v-img :src="img" alt="Sublimación" class="rounded-lg" />
-                </v-carousel-item>
-              </v-carousel>
-            </v-card-text>
-          </v-card>
-        </v-col>
-
-        <v-col cols="12" md="6">
-          <v-card class="servicio-card" elevation="10" rounded="xl">
-            <v-card-title class="font-weight-bold d-flex align-center">
-              <v-icon color="#F47B20" class="mr-2"
-                >mdi-tshirt-crew-outline</v-icon
-              >
-              DTF y Textiles
-            </v-card-title>
-            <v-card-text>
-              <p>
-                Impresión DTF y textiles: delantales, fundas, camisetas y
-                bordados.
-              </p>
-              <v-carousel hide-delimiter-background height="200">
-                <v-carousel-item v-for="img in dtfImgs" :key="img">
-                  <v-img :src="img" alt="DTF y Textiles" class="rounded-lg" />
-                </v-carousel-item>
-              </v-carousel>
-            </v-card-text>
-          </v-card>
+        <v-col cols="12">
+          <p style="color: rgba(255, 255, 255, 0.85); margin-top: 0">
+            <strong>Incluye:</strong> {{ estructurasTitles.join(", ") }}
+          </p>
         </v-col>
       </v-row>
-
       <v-row>
-        <v-col cols="12" md="6">
-          <v-card class="servicio-card" elevation="10" rounded="xl">
-            <v-card-title class="font-weight-bold d-flex align-center">
-              <v-icon color="#25D366" class="mr-2"
-                >mdi-card-account-details</v-icon
-              >
-              Sellos y Carnetización
-            </v-card-title>
-            <v-card-text>
-              <p>Servicios de carnetización, lanyards y kits empresariales.</p>
-              <v-carousel hide-delimiter-background height="200">
-                <v-carousel-item v-for="img in sellosImgs" :key="img">
-                  <v-img :src="img" alt="Sellos y Carnets" class="rounded-lg" />
-                </v-carousel-item>
-              </v-carousel>
-            </v-card-text>
-          </v-card>
-        </v-col>
-
-        <v-col cols="12" md="6">
-          <v-card class="servicio-card" elevation="10" rounded="xl">
-            <v-card-title class="font-weight-bold d-flex align-center">
-              <v-icon color="#1697F6" class="mr-2">mdi-forklift</v-icon>
-              Estructuras Metálicas
-            </v-card-title>
-            <v-card-text>
-              <p>Estructuras y soportes metálicos para publicidad y montaje.</p>
-              <v-carousel hide-delimiter-background height="200">
-                <v-carousel-item v-for="img in estructurasImgs" :key="img">
-                  <v-img
-                    :src="img"
-                    alt="Estructuras Metálicas"
-                    class="rounded-lg"
-                  />
-                </v-carousel-item>
-              </v-carousel>
-            </v-card-text>
+        <v-col
+          cols="12"
+          sm="6"
+          md="4"
+          v-for="(img, idx) in estructurasImgs"
+          :key="'estr-' + idx"
+        >
+          <v-card
+            class="servicio-card"
+            elevation="8"
+            rounded="lg"
+            @click="
+              openDialog(
+                img,
+                estructurasTitles[idx],
+                'Estructuras y soportes metálicos para publicidad y montaje.'
+              )
+            "
+          >
+            <v-row class="align-center pa-3">
+              <v-col cols="4">
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-img
+                      v-bind="attrs"
+                      v-on="on"
+                      :src="img"
+                      height="110"
+                      contain
+                      class="rounded-lg"
+                    />
+                  </template>
+                  <span>{{ estructurasTitles[idx] }}</span>
+                </v-tooltip>
+              </v-col>
+              <v-col cols="8">
+                <div class="subtitle-1" style="font-weight: 700">
+                  {{ estructurasTitles[idx] }}
+                </div>
+                <div style="font-size: 1rem; color: rgba(255, 255, 255, 0.85)">
+                  Estructuras y soportes metálicos para publicidad y montaje.
+                </div>
+              </v-col>
+            </v-row>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
+    <!-- Dialog para vista ampliada -->
+    <v-dialog v-model="dialog" max-width="720">
+      <v-card>
+        <v-img :src="dialogItem.img" height="360" cover />
+        <v-card-title class="font-weight-bold">{{
+          dialogItem.title
+        }}</v-card-title>
+        <v-card-text style="color: #444">{{ dialogItem.desc }}</v-card-text>
+        <v-card-actions>
+          <v-spacer />
+          <v-btn text color="#2f2e83" @click="closeDialog">Cerrar</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </section>
 </template>
 
@@ -335,6 +453,8 @@ export default {
   name: "ProductosSection",
   data() {
     return {
+      dialog: false,
+      dialogItem: { img: "", title: "", desc: "" },
       estampadasImgs: [
         require("@/assets/FOTOGRAFIA - PAGINA F5/5- DTF y Textiles/40- Camiseta Estampada.png"),
       ],
@@ -359,8 +479,26 @@ export default {
         require("@/assets/FOTOGRAFIA - PAGINA F5/4- Sublimación/32- Llaveros.png"),
       ],
       bannersImgs: [
+        require("@/assets/FOTOGRAFIA - PAGINA F5/2- Gran Formato/9- Dummies.png"),
         require("@/assets/FOTOGRAFIA - PAGINA F5/2- Gran Formato/10- Impresión Lona Banner.png"),
         require("@/assets/FOTOGRAFIA - PAGINA F5/2- Gran Formato/11- Vinil Traslúcido Blanco.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/2- Gran Formato/12- Vinil adhesivo.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/2- Gran Formato/13- Stickers troquelado.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/2- Gran Formato/14- Vinil en trovicel.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/2- Gran Formato/15- Señalética de Seguridad Industrial.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/2- Gran Formato/16- Vinil de color troquelado.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/2- Gran Formato/17- Vinil sobre Acrílico.png"),
+      ],
+      bannersTitles: [
+        "Dummies (forma de PVC)",
+        "Impresión Lona Banner",
+        "Vinil Traslúcido Blanco (impresión)",
+        "Vinil Adhesivo (brillante/mate)",
+        "Stickers troquelado",
+        "Vinil en trovicel (PVC)",
+        "Señalética de Seguridad Industrial (PVC)",
+        "Vinil de color troquelado",
+        "Vinil sobre Acrílico",
       ],
       fundascojinImgs: [
         require("@/assets/FOTOGRAFIA - PAGINA F5/5- DTF y Textiles/36- Funda de Cojín.png"),
@@ -375,6 +513,16 @@ export default {
         require("@/assets/FOTOGRAFIA - PAGINA F5/1- Impresión Laser/7- Tarjetas de presentación.png"),
         require("@/assets/FOTOGRAFIA - PAGINA F5/1- Impresión Laser/8- IDiplomas.png"),
       ],
+      impresionLaserTitles: [
+        "Brochures y Trípticos",
+        "Calendario F. Tabloide",
+        "Calendario Santoral",
+        "Afiche Folcote - Calibre 12",
+        "Folder Tamaño Carta",
+        "Papel Adhesivo",
+        "Tarjetas de presentación",
+        "Diplomas / ID",
+      ],
       displayImgs: [
         require("@/assets/FOTOGRAFIA - PAGINA F5/3- Display Publicitarios/18- Backing Banner.png"),
         require("@/assets/FOTOGRAFIA - PAGINA F5/3- Display Publicitarios/19- Banner Araña.png"),
@@ -383,6 +531,14 @@ export default {
         require("@/assets/FOTOGRAFIA - PAGINA F5/3- Display Publicitarios/22- Exhibidores de Coroplas.png"),
         require("@/assets/FOTOGRAFIA - PAGINA F5/3- Display Publicitarios/23- Exhibidores en Acrílico y PVC.png"),
       ],
+      displayTitles: [
+        "Backing Banner",
+        "Banner Araña",
+        "Mesa Exhibidora",
+        "Roll Up Banner",
+        "Exhibidores de Coroplas",
+        "Exhibidores en Acrílico y PVC (personalizados)",
+      ],
       sublimacionImgs: [
         require("@/assets/FOTOGRAFIA - PAGINA F5/4- Sublimación/24- Taza Blanca.png"),
         require("@/assets/FOTOGRAFIA - PAGINA F5/4- Sublimación/25- Taza Mágica Negra.png"),
@@ -390,9 +546,61 @@ export default {
         require("@/assets/FOTOGRAFIA - PAGINA F5/4- Sublimación/29- Pachón Deportivo.png"),
         require("@/assets/FOTOGRAFIA - PAGINA F5/4- Sublimación/30- Pachón con Botón.png"),
       ],
+      sublimacionGalleryImgs: [
+        require("@/assets/FOTOGRAFIA - PAGINA F5/4- Sublimación/24- Taza Blanca.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/4- Sublimación/25- Taza Mágica Negra.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/4- Sublimación/26- Lata Térmica.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/4- Sublimación/27- Vaso doble nivel.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/4- Sublimación/28- Botellas.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/4- Sublimación/29- Pachón Deportivo.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/4- Sublimación/30- Pachón con Botón.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/4- Sublimación/31- Rompecabezas.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/4- Sublimación/32- Llaveros.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/4- Sublimación/33- Lapiceros.png"),
+      ],
+      sublimacionGalleryTitles: [
+        "Taza Blanca - Normal / Grande (11 oz - 15 oz)",
+        "Taza Mágica Negra (11 oz) - brillo / sin brillo",
+        "Lata Térmica (tapadera gris)",
+        "Vaso doble nivel 20 oz",
+        "Botellas personalizadas",
+        "Pachón Deportivo (Aluminio)",
+        "Pachón con Botón",
+        "Rompecabezas (252 pz / A4 / 38x52cm - 500 pz / corazón 20x20cm)",
+        "Llaveros personalizados",
+        "Lapiceros personalizados",
+      ],
       dtfImgs: [
         require("@/assets/FOTOGRAFIA - PAGINA F5/5- DTF y Textiles/34- Impresión DTF.png"),
         require("@/assets/FOTOGRAFIA - PAGINA F5/5- DTF y Textiles/41-  Bordados de camisas Corporativas.png"),
+      ],
+      delantalImgs: [
+        require("@/assets/FOTOGRAFIA - PAGINA F5/5- DTF y Textiles/35- Delantal Poliester.png"),
+      ],
+      dtfSectionImgs: [
+        require("@/assets/FOTOGRAFIA - PAGINA F5/5- DTF y Textiles/34- Impresión DTF.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/5- DTF y Textiles/35- Delantal Poliester.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/5- DTF y Textiles/36- Funda de Cojín.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/5- DTF y Textiles/37- Gorra Sublimada.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/5- DTF y Textiles/38- Gorra Estampada.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/5- DTF y Textiles/39- Camiseta Sublimada.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/5- DTF y Textiles/40- Camiseta Estampada.png"),
+        require("@/assets/FOTOGRAFIA - PAGINA F5/5- DTF y Textiles/41-  Bordados de camisas Corporativas.png"),
+      ],
+      dtfSectionTitles: [
+        "Impresión DTF metro lineal 1x0.58",
+        "Delantal Polyester",
+        "Funda de Cojín",
+        "Gorra Sublimada",
+        "Gorra Estampada",
+        "Camiseta Sublimada",
+        "Camiseta Estampada",
+        "Bordados de camisas Corporativas",
+      ],
+      sellosTitles: [
+        "Carnet Laminado",
+        "Kit Empresarial 1 (Gafete, Lanyard y Carnet)",
+        "Liston porta gafete (Lanyard)",
       ],
       sellosImgs: [
         require("@/assets/FOTOGRAFIA - PAGINA F5/6- Sellos Y carnetización/42-  Carnet Laminado.png"),
@@ -404,34 +612,73 @@ export default {
         require("@/assets/FOTOGRAFIA - PAGINA F5/7- Estructuras Metalicas/46- Burrito Plegable de Metal.png"),
         require("@/assets/FOTOGRAFIA - PAGINA F5/7- Estructuras Metalicas/47- Paleta Publicitaria de Metal.png"),
       ],
+      estructurasTitles: [
+        "Burrito Metálico estático",
+        "Burrito Plegable de Metal",
+        "Paleta Publicitaria de Metal",
+      ],
     };
+  },
+  methods: {
+    openDialog(img, title, desc) {
+      this.dialogItem = { img, title, desc };
+      this.dialog = true;
+    },
+    closeDialog() {
+      this.dialog = false;
+      this.dialogItem = { img: "", title: "", desc: "" };
+    },
   },
 };
 </script>
 
 <style scoped>
 .servicio-card {
-  background: linear-gradient(120deg, #f5f7fa 0%, #e3f0ff 100%);
-  box-shadow: 0 6px 24px #1697f633;
+  background: linear-gradient(120deg, #2b2546 0%, #352a5a 100%);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.45);
   margin-bottom: 32px;
   border-radius: 24px;
   transition: box-shadow 0.2s, transform 0.2s;
+  color: #ffffff;
 }
 .servicio-card:hover {
-  box-shadow: 0 12px 32px #1697f6cc;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.55);
   transform: scale(1.03);
 }
-.v-card-title {
-  font-size: 1.4rem;
-  letter-spacing: 1.5px;
+.servicio-card .subtitle-1 {
+  font-size: 1.15rem;
+  letter-spacing: 0.3px;
+  color: #ff8800;
+  font-weight: 700;
 }
-.v-card-text p {
-  font-size: 1.05rem;
-  color: #333;
-  margin-bottom: 16px;
-  line-height: 1.6;
+.servicio-card .descripcion {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.88);
 }
 .v-img.rounded-lg {
   border-radius: 16px;
+}
+/* For slightly larger thumbnails inside cards */
+.servicio-card .v-image,
+.servicio-card .v-img {
+  height: 110px !important;
+}
+
+/* Force section headers to the previous light color */
+h1#servicios-title,
+h1,
+h2 {
+  color: #ffffff !important;
+}
+
+.v-card-title {
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  color: #222;
+}
+
+/* Dialog text color */
+.v-card-text {
+  color: #444;
 }
 </style>
